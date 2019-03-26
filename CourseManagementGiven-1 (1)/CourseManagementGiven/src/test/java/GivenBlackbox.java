@@ -1,3 +1,9 @@
+/*
+Black box testing includes 16 tests
+Version: 3/26
+
+*/
+
 package test.java;
 
 import static org.junit.Assert.*;
