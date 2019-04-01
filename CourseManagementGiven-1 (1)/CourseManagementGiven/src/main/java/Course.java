@@ -47,7 +47,7 @@ public class Course {
     // if just one or two values no values will be omitted
     public double calculateAverageWithoutMinWithoutMax() throws NullPointerException {
         ArrayList<Integer> collection = new ArrayList<Integer>(points.values());
-        
+         
          int counter = 0;
          int min = Integer.MAX_VALUE;
          int max = Integer.MIN_VALUE;
@@ -61,8 +61,7 @@ public class Course {
             int allPoints = 0;
             for(int point: collection){
                 if (point >= 0) {
-                    
-                    counter = counter++;
+                    counter++; 
                     if (point < min){
                         min = point;
                     }
@@ -72,7 +71,6 @@ public class Course {
                     allPoints = allPoints + point;
                 }
             }
-            
             int totalPoints = allPoints-max-min;
                 return totalPoints/(double)(counter-1); 
 
