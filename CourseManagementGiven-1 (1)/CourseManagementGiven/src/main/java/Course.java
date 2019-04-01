@@ -72,7 +72,7 @@ public class Course {
                 }
             }
             int totalPoints = allPoints-max-min;
-                return totalPoints/(double)(counter-1); 
+                return totalPoints/(double)(counter-2); 
 
         }
     }
