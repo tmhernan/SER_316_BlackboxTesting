@@ -11,7 +11,12 @@ import java.util.Collections;
 import java.util.HashMap;
 
 
+/**
+Class:	Course
 
+Description: Holds a number of hashmpas which hold student data relating to their name, course and points in the 
+course. Methods include calculating a variation of the course average and printing course statistics. 
+*/
 public class Course {
     
     public HashMap<String, Integer> points = new HashMap<>(); // maps student names (asurite) to their points
