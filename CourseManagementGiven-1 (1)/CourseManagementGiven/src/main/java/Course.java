@@ -51,15 +51,19 @@ public class Course {
     // max value and min value should be removed - (if doubles then only the first occurrence)
     // if just one or two values no values will be omitted
     public double calculateAverageWithoutMinWithoutMax() throws NullPointerException {
-        ArrayList<Integer> collection = new ArrayList<Integer>(points.values());
-         
+        ArrayList<Integer> collection = new ArrayList<Integer>(points.values());   
          int counter = 0;
          int min = Integer.MAX_VALUE;
          int max = Integer.MIN_VALUE;
-         if(collection.size() == 1)
+         //SER316-START
+         //Changed to ignore negative points as specification stated
+         if(collection.size() == 1 && collection.get(0) >= 0)
+         //SER316-END
             return collection.get(0);
-        
-        else if(collection.size() == 2 ){
+        //SER316-START
+        //Changed to ignore negative points as specification stated
+        else if(collection.size() == 2 && collection.get(0) >= 0 && collection.get(1) >= 0){
+        //SER316-END
             return (double)(collection.get(0) + collection.get(1))/2;
         }
         else {
@@ -74,30 +78,58 @@ public class Course {
                         max = point;
                     }
                     allPoints = allPoints + point;
+                    //System.out.println( " Point: " + point);
                 }
             }
             int totalPoints = allPoints-max-min;
+            //System.out.println("total points are: " + totalPoints + " all points: " + allPoints);
+            //System.out.println("min " + min + " max: " + max);
+            /*
+            * SER316-START
+            *Changed to avoid a zero point total being divided by
+            *-2. Algorithm now gives correct average when given all
+            *negative point scores
+            */
+            if (totalPoints == 0 || allPoints == 0) {
+            	return 0;
+            }
+            else {
                 return totalPoints/(double)(counter-2); 
-
+            }
+            //SER316-END
         }
     }
     
     // REACH at least 95% Code coverage  (assign 3)
     // if student with the name (asurite member) is not yet included student needs to be added to student list 
     // sets points for a student 
+    ArrayList<Student> students  = new ArrayList<Student>();
     public void set_points(String name, int points) {
-    	System.out.println(points);
-        this.points.put(name, points);
+        //SER316-START
+    	//Added to ignore those students that already exist per specification
+    	if(this.points.containsValue(name) == false) { 
+    		//System.out.println(name + " " + points);
+            addStudent(new Student(name, Major.valueOf("SER")));
+    		this.points.put(name, points);
+    	}else{
+    		//System.out.println(name + " could not be added as " + name + " already exists.");
+    	}
+        //SER316-END
     }
     
     
     // REACH at least 95% Code coverage  (assign 3)
     // Students should only be added when they are not yet in the course (names (asurite member) needs to be unique)
-    ArrayList<Student> students  = new ArrayList<Student>();
     public boolean addStudent(Student s) {
-        students.add(s);
-        points.put(s.getAsurite(), -1);
-        return true;
+        //SER316-START
+        if (students.contains(s)) {
+        	return false;
+        }
+    	students.add(s);
+    	points.put(s.getAsurite(), -1);
+    	
+		return true;  
+        //SER316-END
     }
 
 

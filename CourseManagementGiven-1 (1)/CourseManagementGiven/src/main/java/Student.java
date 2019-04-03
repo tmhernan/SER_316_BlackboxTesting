@@ -48,7 +48,24 @@ public class Student {
     public void setOverall_grade(double overall_grade) {
         this.overall_grade = overall_grade;
     }
-    
+    //SER316-START
+    //Added to correctly find duplicate students 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null)
+            return false;
+        if (getClass() != o.getClass())
+            return false;
+        Student student = (Student) o;
+        if(this.asurite == student.asurite && this.major == student.major)
+        	return true;
+        else 
+        	return false;
+    }
+    //SER316-END
+
     
 
 
