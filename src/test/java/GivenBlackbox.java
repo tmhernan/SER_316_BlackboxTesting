@@ -2,11 +2,21 @@
 Black box testing includes 16 tests
 Version: 3/26
 
-*/
+ */
 
 package test.java;
 
 import static org.junit.Assert.*;
+
+import main.java.Course;
+import main.java.CourseGrades0;
+import main.java.CourseGrades1;
+import main.java.CourseGrades2;
+import main.java.CourseGrades3;
+import main.java.CourseGrades4;
+import main.java.CourseGrades5;
+
+import java.lang.reflect.Constructor;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,26 +28,19 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-import main.java.Course;
-import main.java.CourseGrades1;
-import main.java.CourseGrades2;
-import main.java.CourseGrades5;
-import main.java.CourseGrades4;
-import main.java.CourseGrades0;
-import main.java.CourseGrades3;
 
-import java.lang.reflect.Constructor;
+
 
 @RunWith(Parameterized.class)
 public class GivenBlackbox {
     private Class<Course> classUnderTest;
-    
-    
+
+
     @SuppressWarnings("unchecked")
     public GivenBlackbox(Object classUnderTest) {
         this.classUnderTest = (Class<Course>) classUnderTest;
     }
-    
+
     // Defining all the classes that need to be tested
     @Parameters
     public static Collection<Object[]> courseGradesUnderTest() {
@@ -51,99 +54,99 @@ public class GivenBlackbox {
         };
         return Arrays.asList(classes);
     }
-    
+
     // method to call the correct constructor
     private Course createCourse(String name) throws Exception {
         Constructor<Course> constructor = classUnderTest.getConstructor(String.class);
         return constructor.newInstance(name);
     }
-    
+
 
     // All Courses:
     Course oneStudentZeroP;
     HashMap<String, Integer> oneStudentZeroPExpected = new HashMap<String, Integer>();
-    
+
     Course negOneStudent;
     HashMap<String, Integer> negOneStudentExpected = new HashMap<String, Integer>();
-    
+
     Course noPoints;
     HashMap<String, Integer> noPointsExpected = new HashMap<String, Integer>();
-    
+
     Course twoStudent;
     HashMap<String, Integer> twoStudentExpected = new HashMap<String, Integer>();
-    
+
     Course oneStudent;
     HashMap<String, Integer> oneStudentExpected = new HashMap<String, Integer>();
-    
+
     Course oneStudentClass2;
     HashMap<String, Integer> oneStudentClass2Expected = new HashMap<String, Integer>();
-    
+
     Course oneStudentClass2F;
     HashMap<String, Integer> oneStudentClass2FExpected = new HashMap<String, Integer>();
-    
+
     Course fiveStudentEdge;
     HashMap<String, Integer> fiveStudentEdgeExpected = new HashMap<String, Integer>();
-    
+
     Course fiveStudentEdgeOpp;
     HashMap<String, Integer> fiveStudentEdgeOppExpected = new HashMap<String, Integer>();
-    
+
     Course fiveStudentNegPos;
     HashMap<String, Integer> fiveStudentNegPosExpected = new HashMap<String, Integer>();
-    
+
     Course threeStudent;
     HashMap<String, Integer> threeStudentExpected = new HashMap<String, Integer>();
-    
+
     Course fourStudent;
     HashMap<String, Integer> fourStudentExpected = new HashMap<String, Integer>();
-    
+
     Course fiveStudent;
     HashMap<String, Integer> fiveStudentExpected = new HashMap<String, Integer>();
-    
+
     Course fiveStudentScale;
     HashMap<String, Integer> fiveStudentScaleExpected = new HashMap<String, Integer>();
-    
+
     Course twoStdDupName;
     HashMap<String, Integer> twoStdDupNameExpected = new HashMap<String, Integer>();
-    
+
     Course twoStdDupNameGr;
     HashMap<String, Integer> twoStdDupNameGrExpected = new HashMap<String, Integer>();
-    
+
     Course fiveStudentZeroP;
     HashMap<String, Integer> fiveStudentZeroPExpected = new HashMap<String, Integer>();
-    
+
     Course fiveStudentAllNeg;
     HashMap<String, Integer> fiveStudentAllNegExpected = new HashMap<String, Integer>();
-    
+
     Course tenStudent;
     HashMap<String, Integer> tenStudentExpected = new HashMap<String, Integer>();
-    
+
     @Before
     public void setUp() throws Exception {
-        
+
         // all courses should be created like this
-    	
-    	//One Student with Zero Points
-    	oneStudentZeroP = createCourse("SER216");
-    	oneStudentZeroP.set_points("Anna", 0);
-    	oneStudentZeroPExpected.put("A", 0);
-    	oneStudentZeroPExpected.put("B", 0);
-    	oneStudentZeroPExpected.put("C", 0);
-    	oneStudentZeroPExpected.put("D", 0);
-    	oneStudentZeroPExpected.put("F", 0); //changed to zero per Aanchal Mahajan
-    	  	
-    	
-    	//One Student - negative points
-    	negOneStudent = createCourse("SER215");
-    	negOneStudent.set_points("Tiffany", -100);
-    	negOneStudentExpected.put("A", 0);
-    	negOneStudentExpected.put("B", 0);
-    	negOneStudentExpected.put("C", 0);
-    	negOneStudentExpected.put("D", 0);
-    	negOneStudentExpected.put("F", 0);
+
+        //One Student with Zero Points
+        oneStudentZeroP = createCourse("SER216");
+        oneStudentZeroP.set_points("Anna", 0);
+        oneStudentZeroPExpected.put("A", 0);
+        oneStudentZeroPExpected.put("B", 0);
+        oneStudentZeroPExpected.put("C", 0);
+        oneStudentZeroPExpected.put("D", 0);
+        oneStudentZeroPExpected.put("F", 0); //changed to zero per Aanchal Mahajan
+
+
+        //One Student - negative points
+        negOneStudent = createCourse("SER215");
+        negOneStudent.set_points("Tiffany", -100);
+        negOneStudentExpected.put("A", 0);
+        negOneStudentExpected.put("B", 0);
+        negOneStudentExpected.put("C", 0);
+        negOneStudentExpected.put("D", 0);
+        negOneStudentExpected.put("F", 0);
 
         //No Points - does not call set points
-    	noPoints = createCourse("SER222");
-    	     
+        noPoints = createCourse("SER222");
+
         //SER 316 - TWO students
         twoStudent = createCourse("SER316");
         twoStudent.set_points("Hanna",100);
@@ -153,7 +156,7 @@ public class GivenBlackbox {
         twoStudentExpected.put("C", 0);
         twoStudentExpected.put("D", 0);
         twoStudentExpected.put("F", 0);
-        
+
         //SER 315 - 1 students
         oneStudent = createCourse("SER315");
         oneStudent.set_points("Hanna",100);
@@ -162,7 +165,7 @@ public class GivenBlackbox {
         oneStudentExpected.put("C", 0);
         oneStudentExpected.put("D", 0);
         oneStudentExpected.put("F", 0);
-        
+
         //SER 315 - 1 student A grade
         oneStudentClass2 = createCourse("SER999");
         oneStudentClass2.set_points("Hanna",101);
@@ -171,7 +174,7 @@ public class GivenBlackbox {
         oneStudentClass2Expected.put("C", 0);
         oneStudentClass2Expected.put("D", 0);
         oneStudentClass2Expected.put("F", 0);
-        
+
         //5 students - edge cases for all grades
         fiveStudentEdge = createCourse("ENG101");
         fiveStudentEdge.set_points("Jill",100);// B
@@ -184,7 +187,7 @@ public class GivenBlackbox {
         fiveStudentEdgeExpected.put("C", 1);
         fiveStudentEdgeExpected.put("D", 1);
         fiveStudentEdgeExpected.put("F", 1);
-        
+
         //5 students - edge cases for all grades
         fiveStudentEdgeOpp = createCourse("ENG102");
         fiveStudentEdgeOpp.set_points("Jill",100);
@@ -197,7 +200,7 @@ public class GivenBlackbox {
         fiveStudentEdgeOppExpected.put("C", 1);
         fiveStudentEdgeOppExpected.put("D", 1);
         fiveStudentEdgeOppExpected.put("F", 0);
-        
+
         //5 students - mix of negative and pos grades
         fiveStudentNegPos = createCourse("MAT147");
         fiveStudentNegPos.set_points("Jill",100);
@@ -210,7 +213,7 @@ public class GivenBlackbox {
         fiveStudentNegPosExpected.put("C", 0);
         fiveStudentNegPosExpected.put("D", 0);
         fiveStudentNegPosExpected.put("F", 0);
-        
+
         //THREE students
         threeStudent = createCourse("MAT225");
         threeStudent.set_points("Hanna",100);
@@ -221,7 +224,7 @@ public class GivenBlackbox {
         threeStudentExpected.put("C", 0);
         threeStudentExpected.put("D", 0);
         threeStudentExpected.put("F", 0);
-        
+
         //FOUR students
         fourStudent = createCourse("HST100");
         fourStudent.set_points("Hanna",100);
@@ -233,7 +236,7 @@ public class GivenBlackbox {
         fourStudentExpected.put("C", 0);
         fourStudentExpected.put("D", 0);
         fourStudentExpected.put("F", 0);
-        
+
         //FIVE students
         fiveStudent = createCourse("PHY100");
         fiveStudent.set_points("Hanna",100);
@@ -246,7 +249,7 @@ public class GivenBlackbox {
         fiveStudentExpected.put("C", 0);
         fiveStudentExpected.put("D", 0);
         fiveStudentExpected.put("F", 0);
-        
+
         //Five students on a non-typical scale which
         //produces one edge case, student Karla
         //(not out of 100 points)
@@ -261,7 +264,7 @@ public class GivenBlackbox {
         fiveStudentScaleExpected.put("C", 0);
         fiveStudentScaleExpected.put("D", 1);
         fiveStudentScaleExpected.put("F", 2);
-        
+
         //TWO students with duplicate names/different scores
         twoStdDupName = createCourse("WOW100");
         twoStdDupName.set_points("Hanna",100);
@@ -271,7 +274,7 @@ public class GivenBlackbox {
         twoStdDupNameExpected.put("C", 0);
         twoStdDupNameExpected.put("D", 0);
         twoStdDupNameExpected.put("F", 0); //changed to zero per Aanchal Mahajan
-        
+
         //TWO students with duplicate names/different scores
         twoStdDupNameGr = createCourse("SOC100");
         twoStdDupNameGr.set_points("Hanna",100);
@@ -281,7 +284,7 @@ public class GivenBlackbox {
         twoStdDupNameGrExpected.put("C", 0);
         twoStdDupNameGrExpected.put("D", 0);
         twoStdDupNameGrExpected.put("F", 0);
-        
+
         //Five students zero points
         fiveStudentZeroP = createCourse("ENG220");
         fiveStudentZeroP.set_points("Hanna",0);
@@ -294,7 +297,7 @@ public class GivenBlackbox {
         fiveStudentZeroPExpected.put("C", 0);
         fiveStudentZeroPExpected.put("D", 0);
         fiveStudentZeroPExpected.put("F", 0); //changed to zero per Aanchal Mahajan
-        
+
         //Five students - All Negative grades
         fiveStudentAllNeg = createCourse("YYY100");
         fiveStudentAllNeg.set_points("Hanna",-55);
@@ -307,7 +310,7 @@ public class GivenBlackbox {
         fiveStudentAllNegExpected.put("C", 0);
         fiveStudentAllNegExpected.put("D", 0);
         fiveStudentAllNegExpected.put("F", 0);
-        
+
         //Ten students zero points
         tenStudent = createCourse("ENG555");
         tenStudent.set_points("Hanna",100);
@@ -325,7 +328,7 @@ public class GivenBlackbox {
         tenStudentExpected.put("C", 2);
         tenStudentExpected.put("D", 2);
         tenStudentExpected.put("F", 2); 
-        
+
         //Ten students zero points
         oneStudentClass2F = createCourse("ENG777");
         oneStudentClass2F.set_points("Hanna",10);
@@ -334,11 +337,11 @@ public class GivenBlackbox {
         oneStudentClass2FExpected.put("C", 0);
         oneStudentClass2FExpected.put("D", 0);
         oneStudentClass2FExpected.put("F", 0); 
-         
+
     }
 
     // Sample test
-    
+
     @Test
     public void oneStudentZeroP() {
         HashMap<String, Integer> ans = oneStudentZeroP.countOccurencesLetterGrades();
@@ -346,7 +349,7 @@ public class GivenBlackbox {
         System.out.println(ans);
         assertTrue(ans.equals(oneStudentZeroPExpected));
     }
-    
+
     @Test
     public void negOneStudent() {
         HashMap<String, Integer> ans = negOneStudent.countOccurencesLetterGrades();
@@ -354,15 +357,15 @@ public class GivenBlackbox {
         System.out.println(ans);
         assertTrue(ans.equals(negOneStudentExpected));
     } 
-    
-    @Test(expected=NullPointerException.class)
+
+    @Test(expected =NullPointerException.class)
     public void noPoints() {
         HashMap<String, Integer> ans = noPoints.countOccurencesLetterGrades();
         System.out.println("\nnoPoints - No Points Expected nullPE: ");
         System.out.println(ans);
         //assertNull(ans);
     }    
-    
+
     @Test
     public void twoStudent() {
         HashMap<String, Integer> ans = twoStudent.countOccurencesLetterGrades();
@@ -370,7 +373,7 @@ public class GivenBlackbox {
         System.out.println(ans);
         assertTrue(ans.equals(twoStudentExpected));
     }
-    
+
     @Test
     public void oneStudent() {
         HashMap<String, Integer> ans = oneStudent.countOccurencesLetterGrades();
@@ -378,7 +381,7 @@ public class GivenBlackbox {
         System.out.println(ans);
         assertTrue(ans.equals(oneStudentExpected));
     }
-    
+
     @Test
     public void oneStudentClass2() {
         HashMap<String, Integer> ans = oneStudentClass2.countOccurencesLetterGrades();
@@ -386,7 +389,7 @@ public class GivenBlackbox {
         System.out.println(ans);
         assertTrue(ans.equals(oneStudentClass2Expected));
     }
-    
+
     @Test
     public void fiveStudentEdge() {
         HashMap<String, Integer> ans = fiveStudentEdge.countOccurencesLetterGrades();
@@ -402,7 +405,7 @@ public class GivenBlackbox {
         System.out.println(ans);
         assertTrue(ans.equals(fiveStudentEdgeOppExpected));
     }
-        
+
     @Test
     public void fiveStudentNegPos() {
         HashMap<String, Integer> ans = fiveStudentNegPos.countOccurencesLetterGrades();
@@ -410,7 +413,7 @@ public class GivenBlackbox {
         System.out.println(ans);
         assertTrue(ans.equals(fiveStudentNegPosExpected));
     }
-    
+
     @Test
     public void threeStudent() {
         HashMap<String, Integer> ans = threeStudent.countOccurencesLetterGrades();
@@ -426,7 +429,7 @@ public class GivenBlackbox {
         System.out.println(ans);
         assertTrue(ans.equals(fourStudentExpected));
     } 
-    
+
     @Test
     public void fiveStudent() {
         HashMap<String, Integer> ans = fiveStudent.countOccurencesLetterGrades();
@@ -434,7 +437,7 @@ public class GivenBlackbox {
         System.out.println(ans);
         assertTrue(ans.equals(fiveStudentExpected));
     } 
-    
+
     @Test
     public void fiveStudentScale() {
         HashMap<String, Integer> ans = fiveStudentScale.countOccurencesLetterGrades();
@@ -442,7 +445,7 @@ public class GivenBlackbox {
         System.out.println(ans);
         assertTrue(ans.equals(fiveStudentScaleExpected));
     } 
-    
+
     @Test
     public void twoStdDupName() {
         HashMap<String, Integer> ans = twoStdDupName.countOccurencesLetterGrades();
@@ -450,7 +453,7 @@ public class GivenBlackbox {
         System.out.println(ans);
         assertTrue(ans.equals(twoStdDupNameExpected));
     } 
-    
+
     @Test
     public void twoStdDupNameGr() {
         HashMap<String, Integer> ans = twoStdDupNameGr.countOccurencesLetterGrades();
@@ -458,8 +461,8 @@ public class GivenBlackbox {
         System.out.println(ans);
         assertTrue(ans.equals(twoStdDupNameGrExpected));
     } 
-    
-    
+
+
     @Test
     public void fiveStudentZeroP() {
         HashMap<String, Integer> ans = fiveStudentZeroP.countOccurencesLetterGrades();
@@ -467,7 +470,7 @@ public class GivenBlackbox {
         System.out.println(ans);
         assertTrue(ans.equals(fiveStudentZeroPExpected));
     }
-    
+
     @Test
     public void fiveStudentAllNeg() {
         HashMap<String, Integer> ans = fiveStudentAllNeg.countOccurencesLetterGrades();
@@ -475,7 +478,7 @@ public class GivenBlackbox {
         System.out.println(ans);
         assertTrue(ans.equals(fiveStudentAllNegExpected));
     }
-    
+
     @Test
     public void tenStudent() {
         HashMap<String, Integer> ans = tenStudent.countOccurencesLetterGrades();
@@ -483,7 +486,7 @@ public class GivenBlackbox {
         System.out.println(ans);
         assertTrue(ans.equals(tenStudentExpected));
     }
-    
+
     @Test
     public void oneStudentClass2F() {
         HashMap<String, Integer> ans = oneStudentClass2F.countOccurencesLetterGrades();
