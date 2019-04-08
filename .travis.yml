@@ -1,5 +1,2 @@
-before_install:
-cd \CourseManagementGiven-1\ (1)\CourseManagementGiven
-
 language: java
 jdk: openjdk11
