@@ -1,5 +1,14 @@
 # Compiled class file
 
+# Gradle
+.gradle
+/build/
+
+# Eclipse Core
+.project
+
+# JDT-Specific
+.classpath
 
 # Log file
 *.log
