@@ -84,7 +84,7 @@ public class Course {
                     //System.out.println( " Point: " + point);
                 }
             }
-            int totalPoints = allPoints-max-min;
+            int totalPoints = allPoints - max - min;
             //System.out.println("total points are: " + totalPoints + " all points: " + allPoints);
             //System.out.println("min " + min + " max: " + max);
             /*
@@ -100,9 +100,6 @@ public class Course {
                 return totalPoints/(double)(counter-2); 
             }
             //SER316-END
-
-            int totalPoints = allPoints - max - min;
-            return totalPoints / (double)(counter - 1); 
         }
     }
 
@@ -130,7 +127,6 @@ public class Course {
     // Students should only be added when they are not yet in the course (names (asurite member) needs to be unique)
     // Students should only be added when they are not yet in
     //the course (names (asurite member) needs to be unique)
-    ArrayList<Student> students  = new ArrayList<Student>();
     public boolean addStudent(Student s) {
         //SER316-START
         if (students.contains(s)) {
