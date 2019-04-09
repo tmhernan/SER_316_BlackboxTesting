@@ -7,6 +7,11 @@ Version: 3/26
 package test.java;
 
 import static org.junit.Assert.*;
+import java.lang.reflect.Constructor;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashMap;
 
 import main.java.Course;
 import main.java.CourseGrades0;
@@ -16,12 +21,6 @@ import main.java.CourseGrades3;
 import main.java.CourseGrades4;
 import main.java.CourseGrades5;
 
-import java.lang.reflect.Constructor;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashMap;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

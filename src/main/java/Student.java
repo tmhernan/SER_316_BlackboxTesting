@@ -53,17 +53,22 @@ public class Student {
     //Added to correctly find duplicate students 
     @Override
     public boolean equals(Object o) {
-        if (this == o)
+        if (this == o) {
             return true;
-        if (o == null)
+        }
+        if (o == null) {
             return false;
-        if (getClass() != o.getClass())
+        }
+        if (getClass() != o.getClass()) {
             return false;
+        }
         Student student = (Student) o;
-        if(this.asurite == student.asurite && this.major == student.major)
-        	return true;
-        else 
-        	return false;
+        if (this.asurite.equals(student.asurite) && this.major.equals(student.major)) {
+            return true;
+        }
+        else { 
+            return false;
+        }
     }
     //SER316-END
 

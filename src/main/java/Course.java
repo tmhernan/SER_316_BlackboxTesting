@@ -13,13 +13,14 @@ import main.java.Student;
 
 
 /**
-Class:	Course
+Class:Course
 
-Description: Holds a number of hashmpas which hold student data relating to their name, course and points in the 
-course. Methods include calculating a variation of the course average and printing course statistics. 
-*/
+Description: Holds a number of hashmpas which hold student data relating to their name, 
+course and points in the course. Methods include calculating a variation of the course 
+average and printing course statistics. 
+ */
 public class Course {
- // maps student names (asurite) to their points
+    // maps student names (asurite) to their points
     public HashMap<String, Integer> points = new HashMap<>(); 
     private String name; // course name
 
@@ -39,7 +40,7 @@ public class Course {
 
     public void printCourseStats() {
         //SER316 TASK 2 SPOTBUGS FIX
-       // ArrayList<Integer> values = new ArrayList<Integer>(points.values());
+        // ArrayList<Integer> values = new ArrayList<Integer>(points.values());
 
         System.out.print("Average Grades without max and without min: ");
         System.out.println(this.calculateAverageWithoutMinWithoutMax());
@@ -55,19 +56,20 @@ public class Course {
     public double calculateAverageWithoutMinWithoutMax() throws NullPointerException {
 
         ArrayList<Integer> collection = new ArrayList<Integer>(points.values());   
-         int counter = 0;
-         int min = Integer.MAX_VALUE;
-         int max = Integer.MIN_VALUE;
-         //SER316-START
-         //Changed to ignore negative points as specification stated
-         if(collection.size() == 1 && collection.get(0) >= 0)
-         //SER316-END
-            return collection.get(0);
+        int counter = 0;
+        int min = Integer.MAX_VALUE;
+        int max = Integer.MIN_VALUE;
         //SER316-START
         //Changed to ignore negative points as specification stated
-        else if(collection.size() == 2 && collection.get(0) >= 0 && collection.get(1) >= 0){
-        //SER316-END
-            return (double)(collection.get(0) + collection.get(1))/2;
+        if (collection.size() == 1 && collection.get(0) >= 0) {
+            //SER316-END
+            return collection.get(0);
+        }
+        //SER316-START
+        //Changed to ignore negative points as specification stated
+        else if (collection.size() == 2 && collection.get(0) >= 0 && collection.get(1) >= 0 ) {
+            //SER316-END
+            return (double)(collection.get(0) + collection.get(1)) / 2;
         }
         else {
             int allPoints = 0;
@@ -88,16 +90,16 @@ public class Course {
             //System.out.println("total points are: " + totalPoints + " all points: " + allPoints);
             //System.out.println("min " + min + " max: " + max);
             /*
-            * SER316-START
-            *Changed to avoid a zero point total being divided by
-            *-2. Algorithm now gives correct average when given all
-            *negative point scores
-            */
+             * SER316-START
+             *Changed to avoid a zero point total being divided by
+             *-2. Algorithm now gives correct average when given all
+             *negative point scores
+             */
             if (totalPoints == 0 || allPoints == 0) {
-            	return 0;
+                return 0;
             }
             else {
-                return totalPoints/(double)(counter-2); 
+                return totalPoints / (double)(counter - 2 ); 
             }
             //SER316-END
         }
@@ -108,34 +110,35 @@ public class Course {
     //included student needs to be added to student list 
     // sets points for a student 
     ArrayList<Student> students  = new ArrayList<Student>();
+    @SuppressWarnings("unlikely-arg-type")
     public void set_points(String name, int points) {
-        //SER316-START
-    	//Added to ignore those students that already exist per specification
-    	if(this.points.containsValue(name) == false) { 
-    		//System.out.println(name + " " + points);
+        //Added to ignore those students that already exist per specification
+        if (this.points.containsValue(name) == false ) { 
+        //System.out.println(name + " " + points);
             addStudent(new Student(name, Major.valueOf("SER")));
-    		this.points.put(name, points);
-    	}else{
-    		//System.out.println(name + " could not be added as " + name + " already exists.");
-    	}
+            this.points.put(name, points);
+        } else {
+        //System.out.println(name + " could not be added as " + name + " already exists.");
+        }
         System.out.println(points);
         this.points.put(name, points);
     }
 
 
-    // REACH at least 95% Code coverage  (assign 3)
+    // REACH at least 95% Code coverage  
+    //(assign 3)
     // Students should only be added when they are not yet in the course (names (asurite member) needs to be unique)
     // Students should only be added when they are not yet in
     //the course (names (asurite member) needs to be unique)
     public boolean addStudent(Student s) {
         //SER316-START
         if (students.contains(s)) {
-        	return false;
+            return false;
         }
-    	students.add(s);
-    	points.put(s.getAsurite(), -1);
-    	
-		return true;  
+        students.add(s);
+        points.put(s.getAsurite(), -1);
+     
+        return true;  
         //SER316-END
     }
 
