@@ -70,7 +70,6 @@ public class GivenBlackbox {
     HashMap<String, Integer> negOneStudentExpected = new HashMap<String, Integer>();
 
     Course noPoints;
-    HashMap<String, Integer> noPointsExpected = new HashMap<String, Integer>();
 
     Course twoStudent;
     HashMap<String, Integer> twoStudentExpected = new HashMap<String, Integer>();

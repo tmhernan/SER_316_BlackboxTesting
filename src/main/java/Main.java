@@ -12,6 +12,7 @@ public class Main {
     static HashMap<String, Student> students = new HashMap<>();
     static HashMap<String, CourseGrades0> courses = new HashMap<>();
 
+   
     public static void main(String[] args)throws Exception {
 
         students.put("anna", new Student("anna", Major.valueOf("SER")));
@@ -29,8 +30,9 @@ public class Main {
         courses.put("SER315", new CourseGrades0("SER315"));
         courses.put("SC232", new CourseGrades0("CS232"));
 
-        Integer marksRose ;
-        System.out.println("Anna has scored " + new Integer(40).toString() + " marks which makes her the topper.");
+        //Integer marksRose ;SER316 TASK 2 SPOTBUGS FIX
+        //SER316 TASK 2 SPOTBUGS FIX
+        System.out.println("Anna has scored 40 marks which makes her the topper.");
         courses.get("SER315").set_points("anna", 40);
         courses.get("SER315").set_points("harry", 20);
         courses.get("SER315").set_points("aneesh", 30);

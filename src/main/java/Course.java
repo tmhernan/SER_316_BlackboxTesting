@@ -33,7 +33,8 @@ public class Course {
 
 
     public void printCourseStats() {
-        ArrayList<Integer> values = new ArrayList<Integer>(points.values());
+        //SER316 TASK 2 SPOTBUGS FIX
+       // ArrayList<Integer> values = new ArrayList<Integer>(points.values());
 
         System.out.print("Average Grades without max and without min: ");
         System.out.println(this.calculateAverageWithoutMinWithoutMax());
@@ -63,7 +64,7 @@ public class Course {
             for (int point: collection) {
                 if (point >= 0) {
 
-                    counter = counter++;
+                    counter++;//SER316 TASK 2 SPOTBUGS FIX
                     if (point < min) {
                         min = point;
                     }

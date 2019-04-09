@@ -11,7 +11,7 @@ public class Student {
     private Major major;
     private double overallGrade;
     private ArrayList<Course> courses = new ArrayList<Course>();
-    private ArrayList<Course> courses2 = null;
+    //private ArrayList<Course> courses2 = null;
 
     public Student(String asurite, Major major) {
         this.setAsurite(asurite);
