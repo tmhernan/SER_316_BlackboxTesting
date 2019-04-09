@@ -1,4 +1,8 @@
+<<<<<<< HEAD
  plugins {
+=======
+plugins {
+>>>>>>> StaticAnalysis
    id "com.github.spotbugs" version "1.6.11"
  }
 
