@@ -1,5 +1,5 @@
 # Black Box Testing Assignment Instructions. Code in blackbox branch.
-### RESULTS IN BlackboxResults-tmhernan.pdf.
+### SEE BlackboxResults-tmhernan.pdf for assignment results.
 
 ## Objectives
 In this assignment you will use JUnit to test a software. You can use Eclipse for it or
